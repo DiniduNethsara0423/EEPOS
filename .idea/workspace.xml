@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e6babf9-b604-4a8b-840b-52a2b04f759f" name="Changes" comment="dependancies added">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/DashBoardFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/DashBoardFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/View/DashBoardForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/DashBoardForm.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="7e6babf9-b604-4a8b-840b-52a2b04f759f" name="Changes" comment="Nevigation butons" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704827415082</updated>
-      <workItem from="1704827416089" duration="2901000" />
+      <workItem from="1704827416089" duration="3220000" />
     </task>
     <task id="LOCAL-00001" summary="dependancies added">
       <option name="closed" value="true" />
@@ -107,7 +103,31 @@
       <option name="project" value="LOCAL" />
       <updated>1704829447897</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Nevigation butons">
+      <option name="closed" value="true" />
+      <created>1704830416922</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704830416922</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Nevigation butons">
+      <option name="closed" value="true" />
+      <created>1704830481610</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1704830481610</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Nevigation butons">
+      <option name="closed" value="true" />
+      <created>1704830511862</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1704830511862</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +135,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dependancies added" />
-    <option name="LAST_COMMIT_MESSAGE" value="dependancies added" />
+    <MESSAGE value="Nevigation butons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nevigation butons" />
   </component>
 </project>
