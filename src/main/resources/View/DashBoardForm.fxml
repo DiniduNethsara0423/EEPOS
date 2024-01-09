@@ -12,6 +12,7 @@
             <JFXButton layoutX="21.0" layoutY="80.0" onAction="#ProductsButtonOnAction" text="Products" />
             <JFXButton layoutX="21.0" layoutY="130.0" onAction="#PromoButtonOnAction" text="Promo" />
             <JFXButton layoutX="21.0" layoutY="186.0" onAction="#ReportsButtonOnAction" text="Reports" />
+
          </children>
       </AnchorPane>
    </children>
