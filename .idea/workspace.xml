@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e6babf9-b604-4a8b-840b-52a2b04f759f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/AppInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/DashBoardFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/View/DashBoardForm.fxml" afterDir="false" />
+    <list default="true" id="7e6babf9-b604-4a8b-840b-52a2b04f759f" name="Changes" comment="dependancies added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/DashBoardFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/DashBoardFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/View/DashBoardForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/DashBoardForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "last_directory_selection": "D:/ICEM/recordings/java fx/training to viva javafx/E&E elctricals/sample_pos_eelectricals/src/main/java",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -95,11 +89,32 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704827415082</updated>
-      <workItem from="1704827416089" duration="1815000" />
+      <workItem from="1704827416089" duration="2901000" />
     </task>
+    <task id="LOCAL-00001" summary="dependancies added">
+      <option name="closed" value="true" />
+      <created>1704829425369</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1704829425369</updated>
+    </task>
+    <task id="LOCAL-00002" summary="dependancies added">
+      <option name="closed" value="true" />
+      <created>1704829447897</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1704829447897</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="dependancies added" />
+    <option name="LAST_COMMIT_MESSAGE" value="dependancies added" />
   </component>
 </project>
