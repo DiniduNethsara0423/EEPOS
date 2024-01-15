@@ -19,7 +19,13 @@ public class EmployeeDashBoardFormController {
     public JFXButton BtnPlaceOrder;
     @FXML
     public void placeOrderBtnOnAction(ActionEvent actionEvent) {
-
+    Stage stage=(Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../View/EmployeeDashBoardForm.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.show();
     }
 
     public void itemsBtnOnAction(ActionEvent actionEvent) {
