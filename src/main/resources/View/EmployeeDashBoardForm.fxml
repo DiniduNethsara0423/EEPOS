@@ -9,8 +9,8 @@
       <HBox prefHeight="90.0" prefWidth="1246.0" BorderPane.alignment="CENTER">
          <children>
             <JFXButton fx:id="BtnPlaceOrder" onAction="#placeOrderBtnOnAction" prefHeight="100.0" prefWidth="192.0" style="-fx-background-color: #00008B;" text="Place Order" textFill="WHITE" />
-            <JFXButton fx:id="btnItems" onAction="#itemsBtnOnAction" prefHeight="100.0" prefWidth="192.0" text="Iteams" />
-            <JFXButton fx:id="btnCustomers" onAction="#customersBtnOnAction" prefHeight="90.0" prefWidth="223.0" text="Coustomers" />
+            <JFXButton fx:id="btnItems" onAction="#itemsBtnOnAction" prefHeight="100.0" prefWidth="192.0" text="Items" />
+            <JFXButton fx:id="btnCustomers" onAction="#customersBtnOnAction" prefHeight="90.0" prefWidth="223.0" text="Customers" />
             <JFXButton fx:id="btnOrders" onAction="#ordersBtnOnAction" prefHeight="90.0" prefWidth="209.0" text="Orders" />
             <JFXButton fx:id="btnLogOut" onAction="#logOutBtnOnAction" prefHeight="90.0" prefWidth="435.0" text="Log Out" />
          </children>

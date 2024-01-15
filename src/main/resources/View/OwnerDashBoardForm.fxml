@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controller.OwnerDashBoardFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<BorderPane fx:id="pane" prefHeight="473.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OwnerDashBoardFormController">
+   <top>
+      <HBox prefHeight="49.0" prefWidth="755.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="btnEmployees" onAction="#employeesBtnOnAction" prefHeight="49.0" prefWidth="157.0" text="Employees" />
+            <JFXButton fx:id="btnSalesReports" onAction="#salesReportsBtnOnAction" prefHeight="49.0" prefWidth="180.0" text="Sales Reports" />
+            <JFXButton fx:id="OrderReports" onAction="#orderReportsBtnOnAction" prefHeight="49.0" prefWidth="176.0" text="Order Reports" />
+            <JFXButton fx:id="btnCustomerReports" onAction="#customerReportsBtnOnAction" prefHeight="49.0" prefWidth="164.0" text="Customer Reports" />
+            <JFXButton fx:id="btnLogOut" onAction="#logOutBtnOnAction" prefHeight="49.0" prefWidth="172.0" text="Log Out" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

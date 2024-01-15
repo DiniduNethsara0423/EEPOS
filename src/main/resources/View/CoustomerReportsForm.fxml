@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-
-<BorderPane prefHeight="557.0" prefWidth="750.0" style="-fx-background-color: C9C9C9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerReportsFormController">
+<BorderPane fx:id="pane" prefHeight="557.0" prefWidth="750.0" style="-fx-background-color: C9C9C9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerReportsFormController">
    <top>
       <HBox prefHeight="36.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
