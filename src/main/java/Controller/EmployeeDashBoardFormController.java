@@ -58,7 +58,7 @@ public class EmployeeDashBoardFormController {
     public void placeOrderBtnOnAction(javafx.event.ActionEvent actionEvent) {
         Stage stage = (Stage) pane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../View/EmployeeDashBoardForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../View/PlaceOrderForm.fxml"))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

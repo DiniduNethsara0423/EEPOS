@@ -5,8 +5,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class
-AppInitializer extends Application {
+public class AppInitializer extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -14,7 +13,9 @@ AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-    primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("View/LoginForm.fxml"))));
-    primaryStage.show();
+        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("View/LoginForm.fxml"))));
+        primaryStage.centerOnScreen();
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
 }

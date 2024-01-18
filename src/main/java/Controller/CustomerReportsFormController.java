@@ -46,4 +46,7 @@ public class CustomerReportsFormController {
             throw new RuntimeException(e);
         }
     }
+
+    public static class CustomerEntity {
+    }
 }

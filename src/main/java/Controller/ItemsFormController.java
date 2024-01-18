@@ -1,9 +1,12 @@
 package Controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -12,6 +15,14 @@ import java.io.IOException;
 
 public class ItemsFormController {
 
+    public TableColumn colItemId;
+    public TableColumn colName;
+    public TableColumn colCategory;
+    public TableColumn colStatues;
+    public TableColumn colOrderId;
+    public TableColumn colDelete;
+    public Label orderIdLbl;
+    public JFXComboBox combostatus;
     @FXML
     private BorderPane pane;
 
@@ -46,4 +57,9 @@ public class ItemsFormController {
         }
     }
 
+    public void updateBtnOnAction(javafx.event.ActionEvent actionEvent) {
+    }
+
+    public void statusComboOnAction(javafx.event.ActionEvent actionEvent) {
+    }
 }

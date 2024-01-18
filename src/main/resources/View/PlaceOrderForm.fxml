@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controller.PlaceOrderFormController
-"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane fx:id="pane" prefHeight="679.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PlaceOrderFormController ">
+   <top>
+      <HBox prefHeight="38.0" prefWidth="1092.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="btnBack" onAction="#backBtnOnAction" prefHeight="60.0" prefWidth="547.0" style="-fx-background-color: red;" text="Back" textFill="#e1dcdc" />
+            <JFXButton fx:id="btnLogOut" onAction="#logOutBtnOnAction" prefHeight="60.0" prefWidth="547.0" text="Log out" />
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="641.0" prefWidth="1092.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTextField fx:id="txtCoustomerName" layoutX="53.0" layoutY="28.0" prefHeight="31.0" prefWidth="434.0" promptText="Coustomer Name" />
+            <JFXTextField fx:id="txtEmail" layoutX="606.0" layoutY="28.0" prefHeight="31.0" prefWidth="434.0" text="Email Address" />
+            <JFXTextField fx:id="txtNameOfItem" layoutX="53.0" layoutY="125.0" prefHeight="31.0" prefWidth="434.0" text="Name of the Item" />
+            <JFXTextField fx:id="txtContactNumber" layoutX="53.0" layoutY="73.0" prefHeight="31.0" prefWidth="434.0" text="Contact Number" />
+            <JFXRadioButton fx:id="electricalRadioBtn" layoutX="640.0" layoutY="78.0" text="Electrical" />
+            <JFXRadioButton fx:id="electronicRadioBtn" layoutX="896.0" layoutY="78.0" text="Electronic" />
+            <JFXButton layoutX="674.0" layoutY="125.0" onAction="#saveBtnOnAction" style="-fx-background-color: green;" text="Save" textFill="WHITE" />
+            <JFXButton layoutX="846.0" layoutY="125.0" onAction="#clearBtnOnAction" style="-fx-background-color: red;" text="Clear" textFill="WHITE" />
+            <TableView fx:id="table" layoutX="53.0" layoutY="176.0" prefHeight="335.0" prefWidth="999.0">
+              <columns>
+                <TableColumn fx:id="colItemName" prefWidth="244.0" text="Item Name" />
+                  <TableColumn fx:id="colCategory" prefWidth="409.0" text="Category" />
+                <TableColumn fx:id="colOption" prefWidth="345.0" text="Option" />
+              </columns>
+            </TableView>
+            <JFXButton layoutX="129.0" layoutY="587.0" onAction="#placeOrderBtnOnAction" style="-fx-background-color: green;" text="Place Order" textFill="WHITE" />
+            <JFXButton layoutX="251.0" layoutY="587.0" onAction="#clearBtnOnAction" style="-fx-background-color: red;" text="Clear" textFill="WHITE" />
+            <JFXTextArea fx:id="txtNote" layoutX="327.0" layoutY="549.0" prefHeight="77.0" prefWidth="725.0" />
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>
