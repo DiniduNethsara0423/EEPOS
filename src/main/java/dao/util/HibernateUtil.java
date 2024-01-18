@@ -1,6 +1,7 @@
 package dao.util;
 
 import Controller.CustomerReportsFormController;
+import entity.CustomerEntity;
 import entity.ItemsEntity;
 import entity.OrdersEntity;
 import entity.UsersEntity;
@@ -20,7 +21,7 @@ public class HibernateUtil {
                 .build();
 
         Metadata metadata = new MetadataSources(standardRegistry)
-                .addAnnotatedClass(CustomerReportsFormController.CustomerEntity.class)
+                .addAnnotatedClass(CustomerEntity.class)
                 .addAnnotatedClass(ItemsEntity.class)
                 .addAnnotatedClass(OrdersEntity.class)
                 .addAnnotatedClass(UsersEntity.class)

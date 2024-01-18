@@ -36,11 +36,9 @@ public class PlaceOrderFormController {
     private JFXRadioButton electronicToggleBtn;
     @FXML
     private ToggleGroup category;
-
     @FXML
     private JFXRadioButton electricalToggleBtn;
     PlaceOrderBo placeOrderBo= BoFactory.getInstance().getBo(BoType.PLACE_ORDER_BO);
-
     public void initialize() {
         // Set up cell value factories for table columns
         colItemNo.setCellValueFactory(new PropertyValueFactory<>("itemName"));
@@ -68,11 +66,9 @@ public class PlaceOrderFormController {
             System.out.println("Selected Category: " + selectedCategory);
         }
     }
-
     @FXML
     private void saveBtnOnAction() {
         handleCategorySelection();
-
         if (isEmptyField(txtCustomerName) || isEmptyField(txtContactNumber) || isEmptyField(txtEmail)
                 || isEmptyField(txtItemName) || !(electronicToggleBtn.isSelected() || electricalToggleBtn.isSelected()) ) {
             new Alert(Alert.AlertType.WARNING,"Please fill in all required fields and select a category.").show();
@@ -102,15 +98,16 @@ public class PlaceOrderFormController {
         System.out.println(textField.getText());
         return textField.getText().trim().isEmpty();
     }
+
     public void placeOrderBtnOnAction(ActionEvent actionEvent) {
+        placeOrderBo.save();
     }
+
     public void clearBtnOnAction() {
         txtCustomerName.clear();
         txtContactNumber.clear();
         txtEmail.clear();
         txtItemName.clear();
         category.selectToggle(null);
-
     }
-
 }
