@@ -1,17 +1,18 @@
 package dto.tm;
 
+
 import com.jfoenix.controls.JFXButton;
+import lombok.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
 public class PlaceOrderTm {
-    public PlaceOrderTm(String text, String selectedCategory, JFXButton deleteButton) {
+    private String itemName;
+    private String category;
+    private JFXButton button;
 
-    }
 
-    public Object getItemName() {
-        return null;
-    }
-
-    public Object getCategory() {
-        return null;
-    }
 }

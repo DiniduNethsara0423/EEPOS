@@ -1,7 +1,15 @@
 package dto;
 
-import java.util.List;
+ipackage edu.icet.crm.dto;
 
+import lombok.*;
+
+import java.util.List;
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
 public class CustomerDto {
     private String customerId;
     private String customerName;

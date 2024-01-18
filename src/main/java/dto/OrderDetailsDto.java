@@ -1,7 +1,13 @@
 package dto;
 
-import java.util.List;
+import lombok.*;
 
+import java.util.List;
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
 public class OrderDetailsDto {
     private String itemCode;
     private String itemName;
