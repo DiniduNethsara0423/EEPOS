@@ -1,13 +1,6 @@
 package bo.custom;
 
-import dto.PlaceOrderDto;
+i
+public class PlaceOrderBo {
 
-public interface PlaceOrderBo {
-    String getLastOrderId();
-
-    int getLstItemId();
-
-    Object getLastCustomerId();
-
-    void save(PlaceOrderDto placeOrderDto);
 }
