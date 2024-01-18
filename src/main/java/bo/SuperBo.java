@@ -1,2 +1,3 @@
-package bo;public interface SuperBo {
+package bo;
+public interface SuperBo {
 }

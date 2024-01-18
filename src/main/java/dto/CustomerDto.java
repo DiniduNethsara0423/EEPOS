@@ -1,6 +1,5 @@
 package dto;
 
-ipackage edu.icet.crm.dto;
 
 import lombok.*;
 

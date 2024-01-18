@@ -1,6 +1,6 @@
 package bo.custom;
 
-i
-public class PlaceOrderBo {
+import bo.SuperBo;
 
+public interface PlaceOrderBo extends SuperBo {
 }

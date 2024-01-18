@@ -1,5 +1,5 @@
 package bo;
 
 public enum BoType {
-    PLACE_ORDER_BO
+    PLACE_ORDER, PLACE_ORDER_BO
 }

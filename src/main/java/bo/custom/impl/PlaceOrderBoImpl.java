@@ -1,4 +1,7 @@
 package bo.custom.impl;
 
-public class PlaceOrderBoImpl {
+import bo.custom.PlaceOrderBo;
+
+public class PlaceOrderBoImpl implements PlaceOrderBo {
+
 }
