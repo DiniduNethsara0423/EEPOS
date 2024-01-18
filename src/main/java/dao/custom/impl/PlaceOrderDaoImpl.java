@@ -1,4 +1,6 @@
 package dao.custom.impl;
 
-public class PlaceOrderDaoImpl {
+import dao.custom.PlaceOrderDao;
+
+public class PlaceOrderDaoImpl implements PlaceOrderDao {
 }

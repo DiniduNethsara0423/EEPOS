@@ -39,7 +39,7 @@ public class PlaceOrderFormController {
 
     @FXML
     private JFXRadioButton electricalToggleBtn;
-    PlaceOrderBo placeOrderBo= BoFactory.getInstance().getBo(BoType.PLACE_ORDER);
+    PlaceOrderBo placeOrderBo= BoFactory.getInstance().getBo(BoType.PLACE_ORDER_BO);
 
     public void initialize() {
         // Set up cell value factories for table columns

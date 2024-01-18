@@ -1,4 +1,6 @@
 package dao.custom;
 
-public interface PlaceOrderDao {
+import dao.SuperDao;
+
+public interface PlaceOrderDao extends SuperDao {
 }

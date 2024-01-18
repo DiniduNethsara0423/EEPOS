@@ -1,4 +1,4 @@
-package dao.custom.impl;
+package dao.custom;
 
 public interface CustomerReportsFormDao {
 }
