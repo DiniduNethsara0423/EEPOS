@@ -4,38 +4,38 @@ import Controller.CustomerReportsFormController;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import lombok.ToString;
 import javax.persistence.*;
 import java.util.List;
 @NoArgsConstructor
-@Getter
 @Setter
+@Getter
+
 @Entity
-@Table(name = "Orders")
-public class OrdersEntity {
+@Table(name = "Item")
+public class ItemsEntity {
     @Id
-    @Column(name = "order_id", nullable = false)
-    private String orderId;
-    @Column(name = "order_date")
-    private String orderDate;
+    @Column(name = "item_id", nullable = false)
+    private String itemId;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "category")
+    private String category;
+    @Column(name = "status")
+    private String status;
+
+//    @Column(name = "qty")
+//    private int qty;
 
     @ManyToOne
-    @JoinColumn(name = "customer_name", nullable = false)
-    private CustomerEntity customer;
+    @JoinColumn(name = "order_id", nullable = false)
+    private OrdersEntity order;
 
-    @Column(name = "note")
-    private String note;
-
-    @Column(name = "order_status")
-    private String orderStatus;//added later
-
-    @OneToMany(mappedBy = "order")
-    private List<ItemsEntity> items;
-
-    public OrdersEntity(String orderId, String orderDate, String note, String orderStatus) {
-        this.orderId = orderId;
-        this.orderDate = orderDate;
-        this.note = note;
-        this.orderStatus = orderStatus;
+    public ItemsEntity(String itemId, String name, String category, String status) {//, int qty
+        this.itemId = itemId;
+        this.name = name;
+        this.category = category;
+        this.status = status;
+//        this.qty = qty;
     }
 }

@@ -31,7 +31,6 @@ public class PlaceOrderFormController {
     public TableColumn colItemName;
     @FXML
     private BorderPane pane;
-
     @FXML
     private JFXButton btnBack;
     @FXML
@@ -44,29 +43,25 @@ public class PlaceOrderFormController {
     private JFXRadioButton electricalToggleBtn;
     PlaceOrderBo placeOrderBo= BoFactory.getInstance().getBo(BoType.PLACE_ORDER_BO);
     ObservableList<PlaceOrderTm> tmList = FXCollections.observableArrayList();
-
     public void initialize() {
         // Set up cell value factories for table columns
         colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("button"));
-
         // Enable editing for the 'item name' column
         colItemName.setCellFactory(TextFieldTableCell.forTableColumn());
     }
-
     @FXML
     void backBtnOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/EmployeeView.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../View/EmployeeDashBoardForm.fxml"))));
     }
     @FXML
     void logOutBtnOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../View/LoginForm.fxml"))));
     }
-
-//    private void handleCategorySelection() {
+    //    private void handleCategorySelection() {
 //
 //        RadioButton selectedRadioButton = (RadioButton) category.getSelectedToggle();
 //        if (selectedRadioButton != null) {
@@ -75,11 +70,9 @@ public class PlaceOrderFormController {
 //            System.out.println("Selected Category: " + selectedCategory);
 //        }
 //    }
-
     @FXML
     private void saveBtnOnAction() {
 //        handleCategorySelection();
-
         if (isEmptyField(txtCustomerName) || isEmptyField(txtContactNumber) || isEmptyField(txtEmail)
                 || isEmptyField(txtItemName) || !(electronicToggleBtn.isSelected() || electricalToggleBtn.isSelected()) ) {
             new Alert(Alert.AlertType.WARNING,"Please fill in all required fields and select a category.").show();
@@ -91,11 +84,9 @@ public class PlaceOrderFormController {
             System.out.println(selectedCategory);
             // Create a PlaceOrderTm object
             PlaceOrderTm placeOrderTm = new PlaceOrderTm(txtItemName.getText(), selectedCategory, createDeleteButton());
-
             // Add the PlaceOrderTm to the table
             tmList.add(placeOrderTm);
             table.setItems(tmList  );
-
             // Clear the input fields
             clearBtnOnAction();
         }
@@ -118,11 +109,16 @@ public class PlaceOrderFormController {
 
     public void clearBtnOnAction() {
 
-//        txtCustomerName.clear();
-//        txtContactNumber.clear();
-//        txtEmail.clear();
         txtItemName.clear();
         category.selectToggle(null);
+    }
 
+    public void clearAllBtnOnAction(ActionEvent actionEvent) {
+
+        txtCustomerName.clear();
+        txtContactNumber.clear();
+        txtEmail.clear();
+        txtItemName.clear();
+        category.selectToggle(null);
     }
 }

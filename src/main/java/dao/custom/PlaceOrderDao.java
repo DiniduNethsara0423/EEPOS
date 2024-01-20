@@ -1,8 +1,8 @@
 package dao.custom;
 
 import dao.SuperDao;
-import dto.CustomerDto;
+import dto.PlaceOrderDto;
 
 public interface PlaceOrderDao extends SuperDao {
-    public void save(CustomerDto customerDto);
+    public void save(PlaceOrderDto PlaceOrderDto);
 }

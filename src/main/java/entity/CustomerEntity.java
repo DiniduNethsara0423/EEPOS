@@ -4,6 +4,7 @@ package entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -28,7 +29,7 @@ public class CustomerEntity {
     @Column(name = "contact_number")
     private String contactNumber;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
     private List<OrdersEntity> orders;
 
     public CustomerEntity(String customerId, String customerName, String emailAddress, String contactNumber) {
