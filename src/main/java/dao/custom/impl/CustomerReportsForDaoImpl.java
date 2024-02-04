@@ -1,4 +1,6 @@
-package dao.custom.impl;
+package edu.icet.crm.bo.custom.impl;
 
-public class CustomerReportsForDaoImpl {
+import edu.icet.crm.bo.custom.CustomerReportsViewBo;
+
+public class CustomerReportsViewBoImpl implements CustomerReportsViewBo {
 }

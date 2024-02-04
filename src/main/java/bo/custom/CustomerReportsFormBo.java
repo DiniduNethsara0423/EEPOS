@@ -1,4 +1,6 @@
-package bo.custom;
+package edu.icet.crm.bo.custom;
 
-public interface CustomerReportsFormBo {
+import edu.icet.crm.bo.SuperBo;
+
+public interface CustomerReportsViewBo extends SuperBo {
 }

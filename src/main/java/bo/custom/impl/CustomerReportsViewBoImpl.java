@@ -1,4 +1,6 @@
-package bo.custom.impl;
+package edu.icet.crm.bo.custom.impl;
 
-public class CustomerReportsViewBoImpl {
+import edu.icet.crm.bo.custom.CustomerReportsViewBo;
+
+public class CustomerReportsViewBoImpl implements CustomerReportsViewBo {
 }
