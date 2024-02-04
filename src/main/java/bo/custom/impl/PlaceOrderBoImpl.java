@@ -17,28 +17,32 @@ import java.util.List;
 
 public class PlaceOrderBoImpl implements PlaceOrderBo {
     PlaceOrderDao placeOrderDao= DaoFactory.getInstance().getDao(DaoType.PLACE_ORDER_DAO);
+    public void save(){
+        List<OrderDetailsDto> orderDetailsDtoList=new ArrayList<>();
+        orderDetailsDtoList.add(new OrderDetailsDto(
+                "itm3",
+                "Tv",
+                "electrical"
+        ));
+
+        orderDetailsDtoList.add(new OrderDetailsDto(
+                "itm4",
+                "Tv",
+                "electrical"
+        ));
 
 
-    public void save(){	    public void save(){
-        PlaceOrderDao placeOrderDao= DaoFactory.getInstance().getDao(DaoType.PLACE_ORDER_DAO);
 
-        public void save(){
-            List<OrderDetailsDto> orderDetailsDtoList=new ArrayList<>();
-            orderDetailsDtoList.add(new OrderDetailsDto(
-                    "itm2",
-                    "Tv",
-                    "electrical"
-            ));
-            placeOrderDao.save(new PlaceOrderDto(
+        placeOrderDao.save(new PlaceOrderDto(
 
-                    "cus20",
-                    "minura",
-                    "0705606683",
-                    "mranaweera793@gmail.com",
-                    "ord21",
-                    "1",
-                    "note",
-                    orderDetailsDtoList
-            ));
-        }
+                "cus25",
+                "minura",
+                "mranaweera793@gmail.com",
+                "0705606683",
+                "ord25",
+                "1",
+                "note",
+                orderDetailsDtoList
+        ));
     }
+}
