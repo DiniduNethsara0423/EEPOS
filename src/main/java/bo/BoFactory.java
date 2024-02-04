@@ -1,8 +1,7 @@
 package edu.icet.crm.bo;
 
-import edu.icet.crm.bo.custom.impl.OrdersViewBoImpl;
+import bo.custom.impl.OrdersViewBoImpl;
 import edu.icet.crm.bo.custom.impl.PlaceOrderBoImpl;
-import edu.icet.crm.dao.custom.impl.OrdersViewDaoImpl;
 
 public class BoFactory {
     private BoFactory(){}

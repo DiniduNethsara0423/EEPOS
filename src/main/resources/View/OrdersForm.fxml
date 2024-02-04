@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -12,7 +11,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
-
 <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="818.0" prefWidth="1289.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.crm.controller.OrdersViewController">
     <top>
         <HBox prefHeight="44.0" prefWidth="928.0" BorderPane.alignment="CENTER">
@@ -31,7 +29,7 @@
             <children>
                 <AnchorPane prefHeight="513.0" prefWidth="954.0">
                     <children>
-                        <JFXTextField layoutX="14.0" layoutY="23.0" prefHeight="31.0" prefWidth="286.0" promptText="Search Order by ID or Contact Number" />
+                        <JFXTextField fx:id="txtSearch" layoutX="14.0" layoutY="23.0" onAction="#seachOrderOnAction" prefHeight="31.0" prefWidth="286.0" promptText="Search Order by ID or Contact Number" />
                         <TableView fx:id="table" layoutX="18.0" layoutY="134.0" prefHeight="608.0" prefWidth="1251.0">
                             <columns>
                                 <TableColumn fx:id="colOrderId" prefWidth="183.00003051757812" text="Order ID" />

@@ -73,8 +73,6 @@ public class PlaceOrderViewController {
         Stage stage = (Stage) pane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"))));
     }
-
-
     @FXML
     private void saveBtnOnAction() {
 //        handleCategorySelection();
@@ -136,9 +134,7 @@ public class PlaceOrderViewController {
                 txtNote.getText(),
                 orderDetailsDtoList
         );
-
         placeOrderBo.save(placeOrderDto);
-
         txtCustomerName.clear();
         txtContactNumber.clear();
         txtEmail.clear();
@@ -147,7 +143,7 @@ public class PlaceOrderViewController {
 
         tmList.clear();
         table.setItems(tmList);
-
+        initialize();
     }
 
 
@@ -161,7 +157,6 @@ public class PlaceOrderViewController {
         txtEmail.clear();
         txtItemName.clear();
         category.selectToggle(null);
-
         tmList.clear();
         table.setItems(tmList);
     }

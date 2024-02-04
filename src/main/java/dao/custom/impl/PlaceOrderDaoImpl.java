@@ -24,14 +24,11 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
             return null;
         }
     }
-
     public String getLastCustomerId() {
         String hql = "SELECT c.customerId FROM CustomerEntity c ORDER BY c.customerId DESC";
-
         try (Session session = HibernateUtil.getSession()) {
             Query<String> query = session.createQuery(hql, String.class);
             query.setMaxResults(1); // Fetch only the first result
-
             List<String> result = query.getResultList();
             return result.isEmpty() ? null : result.get(0);
         } catch (Exception e) {
@@ -39,14 +36,11 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
             return null;
         }
     }
-
     public String getLastItemId() {
         String hql = "SELECT i.itemId FROM ItemsEntity i ORDER BY i.itemId DESC";
-
         try (Session session = HibernateUtil.getSession()) {
             Query<String> query = session.createQuery(hql, String.class);
             query.setMaxResults(1); // Fetch only the first result
-
             List<String> result = query.getResultList();
             return result.isEmpty() ? null : result.get(0);
         } catch (Exception e) {
@@ -54,7 +48,6 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
             return null;
         }
     }
-
     public void save(PlaceOrderDto placeOrderDto) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
@@ -72,7 +65,7 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
                     placeOrderDto.getOrderId(),
                     placeOrderDto.getDate(),
                     placeOrderDto.getNote(),
-                    "pending"
+                    "PENDING"
             );
             ordersEntity.setCustomer(customerEntity);  // Set the association manually
             session.save(ordersEntity);
@@ -83,7 +76,7 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
                         dto.getItemCode(),
                         dto.getItemName(),
                         dto.getCategory(),
-                        "pending"
+                        "PENDING"
                 );
                 itemsEntity.setOrder(ordersEntity);  // Set the association manually
                 itemsEntities.add(itemsEntity);

@@ -1,16 +1,9 @@
-package edu.icet.crm.dto;
-
-import lombok.*;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@Getter
-@Setter
-public class OrdersViewDto {
-    private String orderId;
-    private String status;
-    private String customerId;
-    private String orderDate;
-    private String note;
+package edu.icet.crm.dao.custom;
+import edu.icet.crm.dao.SuperDao;
+import edu.icet.crm.dto.OrdersViewDto;
+import edu.icet.crm.entity.OrdersEntity;
+import java.util.List;
+public interface OrdersViewDao extends SuperDao {
+    public List<OrdersViewDto> getOrdersViewDto();
+    boolean updateOrderStatus(String orderId, String newStatus);
 }
