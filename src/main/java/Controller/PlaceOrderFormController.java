@@ -1,4 +1,5 @@
 package edu.icet.crm.controller;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -20,12 +21,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
 public class PlaceOrderViewController {
+
     public JFXTextField txtCustomerName;
     public JFXTextField txtContactNumber;
     public JFXTextField txtEmail;
@@ -39,14 +43,19 @@ public class PlaceOrderViewController {
     public JFXTextArea txtNote;
     @FXML
     private BorderPane pane;
+
     @FXML
     private JFXButton btnBack;
+
     @FXML
     private JFXButton btnLogOut;
+
     @FXML
     private JFXRadioButton electronicToggleBtn;
+
     @FXML
     private ToggleGroup category;
+
     @FXML
     private JFXRadioButton electricalToggleBtn;
     PlaceOrderBo placeOrderBo= BoFactory.getInstance().getBo(BoType.PLACE_ORDER_BO);
@@ -63,47 +72,47 @@ public class PlaceOrderViewController {
 
         lblOrderId.setText(setOrderId());
     }
+
     public String setOrderId(){
         return placeOrderBo.getLastOrderId();
     }
+
     @FXML
     void backBtnOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/EmployeeView.fxml"))));
     }
+
     @FXML
     void logOutBtnOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"))));
     }
 
+
     @FXML
     private void saveBtnOnAction() {
-
-
         if (isEmptyField(txtCustomerName) || isEmptyField(txtContactNumber) || isEmptyField(txtEmail)
                 || isEmptyField(txtItemName) || !(electronicToggleBtn.isSelected() || electricalToggleBtn.isSelected()) ) {
 
             new Alert(Alert.AlertType.WARNING,"Please fill in all required fields and select a category.").show();
         } else {
-
-
-
             RadioButton selectedRadioButton = (RadioButton) category.getSelectedToggle();
             String selectedCategory = selectedRadioButton.getText();
-            System.out.println(selectedCategory);
-
-
-            PlaceOrderTm placeOrderTm = new PlaceOrderTm(txtItemName.getText(), selectedCategory, createDeleteButton());
-
+            PlaceOrderTm placeOrderTm = new PlaceOrderTm(
+                    txtItemName.getText(),
+                    selectedCategory,
+                    createDeleteButton()
+            );
 
             tmList.add(placeOrderTm);
-            table.setItems(tmList  );
+            table.setItems(tmList);
 
 
             clearBtnOnAction();
         }
     }
+
     private JFXButton createDeleteButton() {
         JFXButton deleteButton = new JFXButton("Delete");
         deleteButton.setOnAction(event -> {
@@ -112,6 +121,7 @@ public class PlaceOrderViewController {
         });
         return deleteButton;
     }
+
     private boolean isEmptyField(JFXTextField textField) {
         System.out.println(textField.getText());
         return textField.getText().trim().isEmpty();
@@ -129,7 +139,9 @@ public class PlaceOrderViewController {
     }
     public void placeOrderBtnOnAction(ActionEvent actionEvent) {
         List<OrderDetailsDto> orderDetailsDtoList=new ArrayList<>();
+
         int lastItemId= placeOrderBo.getLstItemId();
+
         for (PlaceOrderTm placeOrderTm:tmList){
             orderDetailsDtoList.add(new OrderDetailsDto(
                     String.format("itm%d", ++lastItemId),
@@ -137,6 +149,7 @@ public class PlaceOrderViewController {
                     placeOrderTm.getCategory()
             ));
         }
+
         PlaceOrderDto placeOrderDto=new PlaceOrderDto(
                 placeOrderBo.getLastCustomerId(),
                 txtCustomerName.getText(),
@@ -147,27 +160,38 @@ public class PlaceOrderViewController {
                 txtNote.getText(),
                 orderDetailsDtoList
         );
+
         placeOrderBo.save(placeOrderDto);
+
         txtCustomerName.clear();
         txtContactNumber.clear();
         txtEmail.clear();
         txtItemName.clear();
         category.selectToggle(null);
+
         tmList.clear();
         table.setItems(tmList);
         initialize();
     }
+
+
+
     public void clearBtnOnAction() {
+
         txtItemName.clear();
         category.selectToggle(null);
     }
+
     public void clearAllBtnOnAction(ActionEvent actionEvent) {
+
         txtCustomerName.clear();
         txtContactNumber.clear();
         txtEmail.clear();
         txtItemName.clear();
         category.selectToggle(null);
+
         tmList.clear();
         table.setItems(tmList);
     }
 }
+

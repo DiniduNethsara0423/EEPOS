@@ -1,4 +1,4 @@
-package edu.icet.crm.dto;
+package dto;
 
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonProperty;

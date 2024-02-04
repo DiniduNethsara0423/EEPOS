@@ -1,4 +1,4 @@
-package edu.icet.crm.dto;
+package dto;
 
 import lombok.*;
 
@@ -12,3 +12,4 @@ public class CustomerBean {
     private String customer_name;
     private String contact_number;
     private String email_address;
+}

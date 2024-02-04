@@ -3,7 +3,6 @@ package dto;
 import lombok.*;
 
 import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -12,8 +11,8 @@ import java.util.List;
 public class PlaceOrderDto {
     private String customerId;
     private String customerName;
-    private String contactNumber;
     private String email;
+    private String contactNumber;
     private String orderId;
     private String date;
     private String note;

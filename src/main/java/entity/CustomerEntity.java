@@ -1,19 +1,17 @@
-package entity;
-
+package edu.icet.crm.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
-// Customer entity
+
 @Setter
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "Customers")
+@Table(name = "customers")
 public class CustomerEntity {
 
     @Id
@@ -30,7 +28,7 @@ public class CustomerEntity {
     private String contactNumber;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
-    private List<OrdersEntity> orders;
+    private List<edu.icet.crm.entity.OrdersEntity> orders;
 
     public CustomerEntity(String customerId, String customerName, String emailAddress, String contactNumber) {
         this.customerId = customerId;
