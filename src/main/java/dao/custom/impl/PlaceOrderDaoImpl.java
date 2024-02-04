@@ -1,23 +1,63 @@
-package dao.custom.impl;
-
-import dao.custom.PlaceOrderDao;
-import dao.util.HibernateUtil;
-import dto.OrderDetailsDto;
-import dto.PlaceOrderDto;
-import entity.CustomerEntity;
-import entity.OrdersEntity;
+package edu.icet.crm.dao.custom.impl;
+import edu.icet.crm.dao.custom.PlaceOrderDao;
+import edu.icet.crm.dao.util.HibernateUtil;
+import edu.icet.crm.dto.OrderDetailsDto;
+import edu.icet.crm.dto.PlaceOrderDto;
+import edu.icet.crm.entity.CustomerEntity;
+import edu.icet.crm.entity.ItemsEntity;
+import edu.icet.crm.entity.OrdersEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import java.util.ArrayList;
 import java.util.List;
-
+import org.hibernate.query.Query;
 public class PlaceOrderDaoImpl implements PlaceOrderDao {
+    public String getLastOrderId() {
+        String hql = "SELECT o.orderId FROM OrdersEntity o ORDER BY o.orderId DESC";
+        try (Session session = HibernateUtil.getSession()) {
+            Query<String> query = session.createQuery(hql, String.class);
+            query.setMaxResults(1); // Fetch only the first result
+            List<String> result = query.getResultList();
+            return result.isEmpty() ? null : result.get(0);
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle the exception appropriately in a production environment
+            return null;
+        }
+    }
+
+    public String getLastCustomerId() {
+        String hql = "SELECT c.customerId FROM CustomerEntity c ORDER BY c.customerId DESC";
+
+        try (Session session = HibernateUtil.getSession()) {
+            Query<String> query = session.createQuery(hql, String.class);
+            query.setMaxResults(1); // Fetch only the first result
+
+            List<String> result = query.getResultList();
+            return result.isEmpty() ? null : result.get(0);
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle the exception appropriately in a production environment
+            return null;
+        }
+    }
+
+    public String getLastItemId() {
+        String hql = "SELECT i.itemId FROM ItemsEntity i ORDER BY i.itemId DESC";
+
+        try (Session session = HibernateUtil.getSession()) {
+            Query<String> query = session.createQuery(hql, String.class);
+            query.setMaxResults(1); // Fetch only the first result
+
+            List<String> result = query.getResultList();
+            return result.isEmpty() ? null : result.get(0);
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle the exception appropriately in a production environment
+            return null;
+        }
+    }
 
     public void save(PlaceOrderDto placeOrderDto) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
-
         try {
             // Save Customer
             CustomerEntity customerEntity = new CustomerEntity(
@@ -27,7 +67,6 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
                     placeOrderDto.getContactNumber()
             );
             session.save(customerEntity);
-
             // Save Order
             OrdersEntity ordersEntity = new OrdersEntity(
                     placeOrderDto.getOrderId(),
@@ -37,7 +76,6 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
             );
             ordersEntity.setCustomer(customerEntity);  // Set the association manually
             session.save(ordersEntity);
-
             // Save Items
             List<ItemsEntity> itemsEntities = new ArrayList<>();
             for (OrderDetailsDto dto : placeOrderDto.getOrderDetailsDtoList()) {
@@ -51,7 +89,6 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
                 itemsEntities.add(itemsEntity);
                 session.save(itemsEntity);
             }
-
             // Commit the transaction
             transaction.commit();
         } catch (Exception e) {

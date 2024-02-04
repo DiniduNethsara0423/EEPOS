@@ -1,11 +1,15 @@
-package Controller;
+package edu.icet.crm.controller;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import bo.BoFactory;
-import bo.BoType;
-import bo.custom.PlaceOrderBo;
-import dto.tm.PlaceOrderTm;
+import edu.icet.crm.bo.BoFactory;
+import edu.icet.crm.bo.BoType;
+import edu.icet.crm.bo.custom.PlaceOrderBo;
+import edu.icet.crm.dto.OrderDetailsDto;
+import edu.icet.crm.dto.PlaceOrderDto;
+import edu.icet.crm.dto.tm.PlaceOrderTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,8 +21,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
-public class PlaceOrderFormController {
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PlaceOrderViewController {
+
     public JFXTextField txtCustomerName;
     public JFXTextField txtContactNumber;
     public JFXTextField txtEmail;
@@ -29,8 +40,10 @@ public class PlaceOrderFormController {
     public TableColumn colCategory;
     public TableColumn colOption;
     public TableColumn colItemName;
+    public JFXTextArea txtNote;
     @FXML
     private BorderPane pane;
+
     @FXML
     private JFXButton btnBack;
     @FXML
@@ -48,18 +61,26 @@ public class PlaceOrderFormController {
         colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("button"));
+
         // Enable editing for the 'item name' column
         colItemName.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        lblOrderId.setText(setOrderId());
     }
+
+    public String setOrderId(){
+        return placeOrderBo.getLastOrderId();
+    }
+
     @FXML
     void backBtnOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../View/EmployeeDashBoardForm.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/EmployeeView.fxml"))));
     }
     @FXML
     void logOutBtnOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../View/LoginForm.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"))));
     }
     //    private void handleCategorySelection() {
 //
@@ -103,18 +124,52 @@ public class PlaceOrderFormController {
         System.out.println(textField.getText());
         return textField.getText().trim().isEmpty();
     }
-    public void placeOrderBtnOnAction(ActionEvent actionEvent) {
-        placeOrderBo.save();
+
+    public String getCurrentDateAsString() {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Format the date as a string (you can customize the format)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = currentDate.format(formatter);
+
+        return formattedDate;
     }
+    public void placeOrderBtnOnAction(ActionEvent actionEvent) {
+        List<OrderDetailsDto> orderDetailsDtoList=new ArrayList<>();
+
+        int lastItemId= placeOrderBo.getLstItemId();
+
+        for (PlaceOrderTm placeOrderTm:tmList){
+            orderDetailsDtoList.add(new OrderDetailsDto(
+                    String.format("itm%d", ++lastItemId),
+                    placeOrderTm.getItemName(),
+                    placeOrderTm.getCategory()
+            ));
+        }
+
+        PlaceOrderDto placeOrderDto=new PlaceOrderDto(
+                placeOrderBo.getLastCustomerId(),
+                txtCustomerName.getText(),
+                txtEmail.getText(),
+                txtContactNumber.getText(),
+                lblOrderId.getText(),
+                getCurrentDateAsString(),
+                txtNote.getText(),
+                orderDetailsDtoList
+        );
+
+        placeOrderBo.save(placeOrderDto);
+    }
+
+
 
     public void clearBtnOnAction() {
 
         txtItemName.clear();
         category.selectToggle(null);
     }
-
     public void clearAllBtnOnAction(ActionEvent actionEvent) {
-
         txtCustomerName.clear();
         txtContactNumber.clear();
         txtEmail.clear();
