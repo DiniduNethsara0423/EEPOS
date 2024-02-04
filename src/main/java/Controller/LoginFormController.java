@@ -1,51 +1,27 @@
-package Controller;
-
+package edu.icet.crm.controller;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-
-public class LoginFormController {
-
+public class LoginViewController {
+    public JFXButton btnSubmit;
     @FXML
-    private BorderPane pane;
-
+    private JFXTextField txtEmail;
     @FXML
-    private JFXButton btnAdminUser;
-
+    private JFXTextField txtPassword;
     @FXML
-    private JFXButton btnUser;
-
+    void txtEmailOnAction(ActionEvent event) {
+    }
     @FXML
-    void adminUserBtnOnAction(ActionEvent event) {
-
+    void txtPasswordOnAction(ActionEvent event) {
     }
 
-    @FXML
-    void userBtnOnAction(ActionEvent event) {
-
-    }
-
-    public void adminUserBtnOnAction(javafx.event.ActionEvent actionEvent) {
-        Stage stage = (Stage) pane.getScene().getWindow();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../View/OwnerDashBoardForm.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void userBtnOnAction(javafx.event.ActionEvent actionEvent) {
-        Stage stage = (Stage) pane.getScene().getWindow();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../View/EmployeeDashBoardForm.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void btnSubmitOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) btnSubmit.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OwnerView.fxml"))));
     }
 }
