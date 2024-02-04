@@ -1,11 +1,10 @@
 package edu.icet.crm.controller;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import edu.icet.crm.bo.BoFactory;
 import edu.icet.crm.bo.BoType;
 import edu.icet.crm.bo.custom.ItemsViewBo;
-import edu.icet.crm.dto.ItemsViewDto;
+import edu.icet.crm.dto.ItemDto;
 import edu.icet.crm.dto.tm.ItemsViewTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,7 +33,6 @@ public class ItemsViewController {
     public JFXComboBox comboStatus;
     @FXML
     private BorderPane pane;
-
     @FXML
     private JFXButton btnBack;
     @FXML
@@ -49,23 +47,22 @@ public class ItemsViewController {
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
         colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
-
         populateTable();
-
         tblItems.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 lblOrderID.setText(newValue.getItemId());
             }
         });
-
         ObservableList<String> statusOptions = FXCollections.observableArrayList("PENDING", "PROCESSING", "COMPLETED");
         comboStatus.setItems(statusOptions);
     }
-
     private void populateTable() {
+
         itemsData.clear();
-        List<ItemsViewDto> itemsList = itemsViewBo.getAllItems();
-        for (ItemsViewDto itemDto : itemsList) {
+
+        List<ItemDto> itemsList = itemsViewBo.getAllItems();
+
+        for (ItemDto itemDto : itemsList) {
             JFXButton deleteButton = new JFXButton("Delete");
             deleteButton.setStyle("-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF;");
             deleteButton.setOnAction(event -> deleteItem(itemDto.getItemId()));
@@ -106,12 +103,10 @@ public class ItemsViewController {
         Stage stage = (Stage) pane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"))));
     }
-
     @FXML
     private void updateBtnOnAction(ActionEvent event) {
         String selectedStatus = (String) comboStatus.getValue();
         String orderId = lblOrderID.getText();
-
         if (selectedStatus != null && !selectedStatus.isEmpty() && orderId != null && !orderId.isEmpty()) {
             boolean updateResult = itemsViewBo.updateItemStatus(orderId, selectedStatus);
             showUpdatePopup(updateResult);
@@ -119,33 +114,26 @@ public class ItemsViewController {
             showAlert("Invalid Input", "Please select a status and ensure the order ID is available.");
         }
     }
-
     private void showUpdatePopup(boolean updateResult) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Update Result");
-
         if (updateResult) {
             alert.setContentText("Item status updated successfully!");
             populateTable();
         } else {
             alert.setContentText("Failed to update item status.");
         }
-
         alert.showAndWait();
     }
-
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
         alert.setContentText(content);
         alert.showAndWait();
     }
-
-//    public void updateBtnOnAction(ActionEvent actionEvent) {
+    //    public void updateBtnOnAction(ActionEvent actionEvent) {
 //
 //    }
-
     public void statusComboOnAction(ActionEvent actionEvent) {
-
     }
 }

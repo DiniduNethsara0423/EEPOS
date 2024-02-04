@@ -5,7 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import edu.icet.crm.bo.BoFactory;
 import edu.icet.crm.bo.BoType;
 import edu.icet.crm.bo.custom.OrdersViewBo;
-import edu.icet.crm.dto.OrdersViewDto;
+import edu.icet.crm.dto.OrderDto;
 import edu.icet.crm.dto.tm.OrdersViewTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,17 +56,18 @@ public class OrdersViewController {
                 lblOrderID.setText(newValue.getOrderId());
             }
         });
-
         ObservableList<String> statusOptions = FXCollections.observableArrayList("PENDING", "PROCESSING", "COMPLETED");
         comboStatus.setItems(statusOptions);
     }
     private void loadDataToTable() {
         ObservableList<OrdersViewTm> tmList = FXCollections.observableArrayList();
-        List<OrdersViewDto> ordersList = ordersViewBo.getOrdersViewDto();
+
+        List<OrderDto> ordersList = ordersViewBo.getOrdersViewDto();
         if (ordersList != null) {
-            for (OrdersViewDto order : ordersList) {
+            for (OrderDto order : ordersList) {
                 JFXButton returnButton = new JFXButton("Return");
                 JFXButton closeOrderButton = new JFXButton("Close Order");
+
                 tmList.add(new OrdersViewTm(
                         order.getOrderId(),
                         order.getStatus(),

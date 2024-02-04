@@ -1,13 +1,11 @@
 package edu.icet.crm.dto;
-
 import lombok.*;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Getter
 @Setter
-public class ItemsViewDto {
+public class ItemDto {
 
     private String itemId;
     private String status;
