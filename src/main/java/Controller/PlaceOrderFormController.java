@@ -51,13 +51,16 @@ public class PlaceOrderViewController {
     private JFXRadioButton electricalToggleBtn;
     PlaceOrderBo placeOrderBo= BoFactory.getInstance().getBo(BoType.PLACE_ORDER_BO);
     ObservableList<PlaceOrderTm> tmList = FXCollections.observableArrayList();
+
     public void initialize() {
-        // Set up cell value factories for table columns
+
         colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("button"));
-        // Enable editing for the 'item name' column
+
+
         colItemName.setCellFactory(TextFieldTableCell.forTableColumn());
+
         lblOrderId.setText(setOrderId());
     }
     public String setOrderId(){
@@ -73,24 +76,31 @@ public class PlaceOrderViewController {
         Stage stage = (Stage) pane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"))));
     }
+
     @FXML
     private void saveBtnOnAction() {
-//        handleCategorySelection();
+
+
         if (isEmptyField(txtCustomerName) || isEmptyField(txtContactNumber) || isEmptyField(txtEmail)
                 || isEmptyField(txtItemName) || !(electronicToggleBtn.isSelected() || electricalToggleBtn.isSelected()) ) {
+
             new Alert(Alert.AlertType.WARNING,"Please fill in all required fields and select a category.").show();
         } else {
-            // Proceed with the "Add" functionality
-            // Get the selected category
+
+
+
             RadioButton selectedRadioButton = (RadioButton) category.getSelectedToggle();
             String selectedCategory = selectedRadioButton.getText();
             System.out.println(selectedCategory);
-            // Create a PlaceOrderTm object
+
+
             PlaceOrderTm placeOrderTm = new PlaceOrderTm(txtItemName.getText(), selectedCategory, createDeleteButton());
-            // Add the PlaceOrderTm to the table
+
+
             tmList.add(placeOrderTm);
             table.setItems(tmList  );
-            // Clear the input fields
+
+
             clearBtnOnAction();
         }
     }
@@ -106,12 +116,15 @@ public class PlaceOrderViewController {
         System.out.println(textField.getText());
         return textField.getText().trim().isEmpty();
     }
+
     public String getCurrentDateAsString() {
-        // Get the current date
+
         LocalDate currentDate = LocalDate.now();
-        // Format the date as a string (you can customize the format)
+
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String formattedDate = currentDate.format(formatter);
+
         return formattedDate;
     }
     public void placeOrderBtnOnAction(ActionEvent actionEvent) {
@@ -140,13 +153,10 @@ public class PlaceOrderViewController {
         txtEmail.clear();
         txtItemName.clear();
         category.selectToggle(null);
-
         tmList.clear();
         table.setItems(tmList);
         initialize();
     }
-
-
     public void clearBtnOnAction() {
         txtItemName.clear();
         category.selectToggle(null);

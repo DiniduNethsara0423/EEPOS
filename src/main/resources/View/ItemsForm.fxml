@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,38 +11,46 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="pane" prefHeight="786.0" prefWidth="1251.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ItemsFormController">
-   <top>
-      <HBox prefHeight="32.0" prefWidth="760.0" BorderPane.alignment="CENTER">
-         <children>
-            <JFXButton fx:id="btnBack" onAction="#backBtnOnAction" prefHeight="32.0" prefWidth="646.0" style="-fx-background-color: red;" text="Back" textFill="WHITE" />
-            <JFXButton fx:id="btnLogOut" onAction="#logOutBtnOnAction" prefHeight="32.0" prefWidth="678.0" text="Log Out" />
-         </children>
-      </HBox>
-   </top>
-   <left>
-      <StackPane prefHeight="754.0" prefWidth="1249.0" BorderPane.alignment="CENTER">
-         <children>
-            <AnchorPane prefHeight="754.0" prefWidth="1134.0">
-               <children>
-                  <TableView layoutX="35.0" layoutY="176.0" prefHeight="461.0" prefWidth="1159.0">
-                    <columns>
-                      <TableColumn fx:id="colItemId" prefWidth="159.0" text="Item ID" />
-                      <TableColumn fx:id="colName" prefWidth="205.0" text="Name" />
-                        <TableColumn fx:id="colCategory" prefWidth="245.0" text="Category" />
-                        <TableColumn fx:id="colStatues" prefWidth="265.0" text="Status" />
-                        <TableColumn fx:id="colOrderId" prefWidth="172.0" text="Order Id" />
-                        <TableColumn fx:id="colDelete" prefWidth="112.0" text="Delete" />
-                    </columns>
-                  </TableView>
-                  <Label fx:id="orderIdLbl" layoutX="60.0" layoutY="27.0" text="Order Id" />
-                  <JFXComboBox fx:id="combostatus" layoutX="146.0" layoutY="22.0" onAction="#statusComboOnAction" prefHeight="33.0" prefWidth="335.0" />
-                  <JFXButton layoutX="560.0" layoutY="22.0" onAction="#updateBtnOnAction" text="Update" />
-                  <JFXTextField layoutX="760.0" layoutY="22.0" prefHeight="31.0" prefWidth="367.0" promptText="Search Item" />
-               </children>
-            </AnchorPane>
-         </children>
-      </StackPane>
-   </left>
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="796.0" prefWidth="1255.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.crm.controller.ItemsViewController">
+    <top>
+        <HBox prefHeight="44.0" prefWidth="928.0" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="btnBack" buttonType="RAISED" onAction="#backBtnOnAction" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: red;" text="Back" textFill="WHITE" />
+                <JFXButton fx:id="btnLogOut" buttonType="RAISED" layoutX="571.0" layoutY="10.0" onAction="#logOutBtnOnAction" prefHeight="1000.0" prefWidth="1000.0" text="Log Out">
+                    <HBox.margin>
+                        <Insets left="100.0" />
+                    </HBox.margin>
+                </JFXButton>
+            </children>
+        </HBox>
+    </top>
+    <center>
+        <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="761.0" prefWidth="1255.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane prefHeight="647.0" prefWidth="1029.0">
+                    <children>
+                        <JFXTextField layoutX="16.0" layoutY="30.0" prefHeight="31.0" prefWidth="326.0" promptText="Search Item" />
+                        <TableView fx:id="tblItems" layoutX="16.0" layoutY="83.0" prefHeight="605.0" prefWidth="1226.0">
+                            <columns>
+                                <TableColumn fx:id="colItemId" prefWidth="182.00003051757812" text="Item ID" />
+                                <TableColumn fx:id="colStatus" prefWidth="176.0" text="Status" />
+                                <TableColumn fx:id="colCategory" prefWidth="165.0" text="Category" />
+                                <TableColumn fx:id="colName" prefWidth="411.0" text="Name" />
+                                <TableColumn fx:id="colOrderId" prefWidth="150.0" text="Order ID" />
+                                <TableColumn fx:id="colDelete" prefWidth="140.0" text="Delete" />
+                            </columns>
+                        </TableView>
+                        <Label fx:id="lblOrderID" layoutX="465.0" layoutY="30.0" prefHeight="21.0" prefWidth="109.0" text="Order Id">
+                            <font>
+                                <Font size="21.0" />
+                            </font>
+                        </Label>
+                        <JFXComboBox fx:id="comboStatus" layoutX="594.0" layoutY="30.0" onAction="#statusComboOnAction" prefHeight="31.0" prefWidth="177.0" />
+                        <JFXButton layoutX="801.0" layoutY="30.0" onAction="#updateBtnOnAction" prefHeight="31.0" prefWidth="133.0" text="Update " />
+                    </children></AnchorPane>
+            </children>
+        </StackPane>
+    </center>
 </BorderPane>

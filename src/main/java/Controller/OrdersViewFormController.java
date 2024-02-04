@@ -1,5 +1,4 @@
 package edu.icet.crm.controller;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -37,16 +36,13 @@ public class OrdersViewController {
     public JFXTextField txtSearch;
     @FXML
     private BorderPane pane;
-
     @FXML
     private JFXButton btnBack;
     @FXML
     private JFXButton btnLogOut;
     private OrdersViewBo ordersViewBo= BoFactory.getInstance().getBo(BoType.ORDERS_VIEW_BO);
-    // Existing code...
     @FXML
     private void initialize() {
-        // Set up cell value factories for table columns
         colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
@@ -54,22 +50,16 @@ public class OrdersViewController {
         colNote.setCellValueFactory(new PropertyValueFactory<>("note"));
         colCloseBtn.setCellValueFactory(new PropertyValueFactory<>("closeOrderButton"));
         colReturnBtn.setCellValueFactory(new PropertyValueFactory<>("returnButton"));
-
-        // Load data to the table
         loadDataToTable();
-
-        // Set up row click event
         table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 lblOrderID.setText(newValue.getOrderId());
             }
         });
 
-        // Set up combo box with status values
         ObservableList<String> statusOptions = FXCollections.observableArrayList("PENDING", "PROCESSING", "COMPLETED");
         comboStatus.setItems(statusOptions);
     }
-
     private void loadDataToTable() {
         ObservableList<OrdersViewTm> tmList = FXCollections.observableArrayList();
         List<OrdersViewDto> ordersList = ordersViewBo.getOrdersViewDto();
@@ -77,7 +67,6 @@ public class OrdersViewController {
             for (OrdersViewDto order : ordersList) {
                 JFXButton returnButton = new JFXButton("Return");
                 JFXButton closeOrderButton = new JFXButton("Close Order");
-                // Set actions for buttons if needed
                 tmList.add(new OrdersViewTm(
                         order.getOrderId(),
                         order.getStatus(),
@@ -91,7 +80,6 @@ public class OrdersViewController {
         }
         table.setItems(tmList);
     }
-    // Existing code...
     @FXML
     void backBtnOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
@@ -103,25 +91,20 @@ public class OrdersViewController {
         Stage stage = (Stage) pane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"))));
     }
-
     @FXML
     void updateBtnOnAction(ActionEvent actionEvent) {
         OrdersViewTm selectedOrder = table.getSelectionModel().getSelectedItem();
         if (selectedOrder != null) {
             String selectedStatus = comboStatus.getValue().toString();
             boolean updateSuccess = ordersViewBo.updateOrderStatus(selectedOrder.getOrderId(), selectedStatus);
-
             if (updateSuccess) {
-                // Show pop-up for successful update
                 showAlert("Update Successful", "Order status updated successfully.");
                 loadDataToTable();
             } else {
-                // Show pop-up for unsuccessful update
                 showAlert("Update Failed", "Failed to update order status.");
             }
         }
     }
-
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -129,11 +112,8 @@ public class OrdersViewController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
     public void statusComboOnAction(ActionEvent actionEvent) {
-
     }
-
     public void seachOrderOnAction(ActionEvent actionEvent) {
     }
 }

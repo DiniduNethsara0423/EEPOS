@@ -14,25 +14,29 @@ import org.hibernate.query.Query;
 public class PlaceOrderDaoImpl implements PlaceOrderDao {
     public String getLastOrderId() {
         String hql = "SELECT o.orderId FROM OrdersEntity o ORDER BY o.orderId DESC";
+
         try (Session session = HibernateUtil.getSession()) {
             Query<String> query = session.createQuery(hql, String.class);
-            query.setMaxResults(1); // Fetch only the first result
+            query.setMaxResults(1);
+
             List<String> result = query.getResultList();
             return result.isEmpty() ? null : result.get(0);
         } catch (Exception e) {
-            e.printStackTrace(); // Handle the exception appropriately in a production environment
+            e.printStackTrace();
             return null;
         }
     }
     public String getLastCustomerId() {
         String hql = "SELECT c.customerId FROM CustomerEntity c ORDER BY c.customerId DESC";
+
         try (Session session = HibernateUtil.getSession()) {
             Query<String> query = session.createQuery(hql, String.class);
-            query.setMaxResults(1); // Fetch only the first result
+            query.setMaxResults(1);
+
             List<String> result = query.getResultList();
             return result.isEmpty() ? null : result.get(0);
         } catch (Exception e) {
-            e.printStackTrace(); // Handle the exception appropriately in a production environment
+            e.printStackTrace();
             return null;
         }
     }
@@ -44,7 +48,7 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
             List<String> result = query.getResultList();
             return result.isEmpty() ? null : result.get(0);
         } catch (Exception e) {
-            e.printStackTrace(); // Handle the exception appropriately in a production environment
+            e.printStackTrace();
             return null;
         }
     }
@@ -67,8 +71,9 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
                     placeOrderDto.getNote(),
                     "PENDING"
             );
-            ordersEntity.setCustomer(customerEntity);  // Set the association manually
+            ordersEntity.setCustomer(customerEntity);
             session.save(ordersEntity);
+
             // Save Items
             List<ItemsEntity> itemsEntities = new ArrayList<>();
             for (OrderDetailsDto dto : placeOrderDto.getOrderDetailsDtoList()) {
@@ -78,16 +83,16 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
                         dto.getCategory(),
                         "PENDING"
                 );
-                itemsEntity.setOrder(ordersEntity);  // Set the association manually
+                itemsEntity.setOrder(ordersEntity);
                 itemsEntities.add(itemsEntity);
                 session.save(itemsEntity);
             }
-            // Commit the transaction
+
             transaction.commit();
         } catch (Exception e) {
-            // Rollback the transaction in case of an exception
+
             transaction.rollback();
-            e.printStackTrace(); // Handle the exception appropriately in a production environment
+            e.printStackTrace();
         } finally {
             session.close();
         }
