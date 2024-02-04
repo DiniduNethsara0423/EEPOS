@@ -1,4 +1,19 @@
-package dto.tm;
+package edu.icet.crm.dto.tm;
 
-public class OrdersFormTm {
+import com.jfoenix.controls.JFXButton;
+import lombok.*;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
+public class OrdersViewTm {
+    private String orderId;
+    private String status;
+    private String customerId;
+    private String orderDate;
+    private String note;
+    private JFXButton returnButton;
+    private JFXButton closeOrderButton;
 }
